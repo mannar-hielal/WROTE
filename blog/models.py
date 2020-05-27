@@ -6,10 +6,8 @@ from django.contrib.auth.models import User
 
 class PublishedManager(models.Manager):
     # to filter posts using published
-    def get__queryset(self):
-        return super(PublishedManager,
-                     self).get_queryset() \
-            .filter(status='published')
+    def get_queryset(self):
+        return super().get_queryset().filter(status='published')
 
 
 class Post(models.Model):
