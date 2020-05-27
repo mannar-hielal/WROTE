@@ -1,9 +1,11 @@
 from django.db import models
+from django.urls import reverse
 from django.utils import timezone
 from django.contrib.auth.models import User
 
 
 class PublishedManager(models.Manager):
+    # to filter posts using published
     def get__queryset(self):
         return super(PublishedManager,
                      self).get_queryset() \
@@ -37,3 +39,11 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    # Will be used in post to link to specific posts.
+    def get_absolute_url(self):
+        return reverse('blog:post_detail',
+                       args=[self.publish.year,
+                            self.publish.month,
+                            self.publish.day,
+                            self.slug])
