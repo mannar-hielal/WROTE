@@ -15,9 +15,20 @@
                 {% trans "Share this post" %}
             </a>
         </p>
+        {#        Similar posts#}
+        <h2>Similar posts</h2>
+        {% for post in similar_posts %}
+            <p>
+                <a href="{{ post.get_absolute_url }}">
+                    {{ post.title }}
+                </a>
+            </p>
+        {% empty %}
+            There are no similar posts.
+        {% endfor %}
         {#        total number of comments#}
         {% with comments.count as total_comments %}
-            <h2>{{ total_comments }} {% trans "Comment" %} {{ total_comments|pluralize }}</h2>
+            <h2>{{ total_comments }} {% trans "Comment" %}{{ total_comments|pluralize }}</h2>
         {% endwith %}
 
         {#        list of comments#}

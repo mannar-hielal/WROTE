@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 
     # third-party frameworks
     'django_extensions',
+    'taggit',
     # my apps
     'blog.apps.BlogConfig',
 ]

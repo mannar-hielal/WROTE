@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-29 16:40+0200\n"
+"POT-Creation-Date: 2020-05-29 20:37+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,45 +18,50 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\blog\models.py:20 .\blog\models.py:25
+#: .\blog\models.py:21
 msgctxt "Model: Post"
 msgid "Title"
 msgstr "Titel"
 
-#: .\blog\models.py:27
+#: .\blog\models.py:26
+msgctxt "Model: Post"
+msgid "Author"
+msgstr "Autor"
+
+#: .\blog\models.py:28
 msgctxt "Model: Post"
 msgid "Body"
 msgstr "Beschreibung"
 
-#: .\blog\models.py:29
+#: .\blog\models.py:30
 msgctxt "Model: Post"
 msgid "Publish date"
 msgstr "Veröffentlichungsdatum"
 
-#: .\blog\models.py:61
+#: .\blog\models.py:64
 msgctxt "Model: Comment"
 msgid "Name"
 msgstr "Von"
 
-#: .\blog\models.py:62
+#: .\blog\models.py:65
 msgctxt "Model: Comment"
 msgid "E-Mail"
 msgstr "E-Mail Adresse"
 
-#: .\blog\models.py:63
+#: .\blog\models.py:66
 msgctxt "Model: Comment"
 msgid "Body"
 msgstr "Kommentar"
 
-#: .\blogsite\settings.py:130
+#: .\blogsite\settings.py:131
 msgid "en"
 msgstr ""
 
-#: .\blogsite\settings.py:131
+#: .\blogsite\settings.py:132
 msgid "de"
 msgstr ""
 
-#: .\blogsite\settings.py:132
+#: .\blogsite\settings.py:133
 msgid "fr"
 msgstr ""
 
@@ -88,6 +93,3 @@ msgstr "Beantworten"
 #: .\templates\list.html:3
 msgid "All posts"
 msgstr "Alle Beiträge"
-
-
-

@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.utils.translation import pgettext_lazy
+from taggit.managers import TaggableManager
 
 
 class PublishedManager(models.Manager):
@@ -22,7 +23,7 @@ class Post(models.Model):
                             unique_for_date='publish')
     author = models.ForeignKey(User,
                                on_delete=models.CASCADE,
-                               verbose_name=pgettext_lazy('Model: Post', 'Title'),
+                               verbose_name=pgettext_lazy('Model: Post', 'Author'),
                                related_name='blog_posts')
     body = models.TextField(verbose_name=pgettext_lazy('Model: Post', 'Body'))
     publish = models.DateTimeField(default=timezone.now,
@@ -35,6 +36,8 @@ class Post(models.Model):
 
     objects = models.Manager()
     published = PublishedManager()
+
+    tags = TaggableManager()
 
     class Meta:
         ordering = ('-publish',)
