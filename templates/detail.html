@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %} Wrote - {{ post.title }}{% endblock %}
+
+<div>
+    {% block content %}
+        <h1>{{ post.title }}</h1>
+        <p class="date">
+            {% trans "Published" %} {{ post.publish }}  {% trans "by" %} {{ post.author }}
+        </p>
+        {{ post.body| linebreaks }}
+        <p>
+            <a href="{% url "blog:post_share" post.id %}">
+                {% trans "Share this post" %}
+            </a>
+        </p>
+        {#        total number of comments#}
+        {% with comments.count as total_comments %}
+            <h2>{{ total_comments }} {% trans "Comment" %} {{ total_comments|pluralize }}</h2>
+        {% endwith %}
+
+        {#        list of comments#}
+        {% for comment in comments %}
+            {% if comment.is_parent %}
+                <div class="comment">
+                    <p class="info">
+                        Comment {{ forloop.counter }} {% trans "by" %} {{ comment.name }}
+                        {{ comment.created }}
+                    </p>
+                    {{ comment.body| linebreaks }}
+
+
+                    {#  list of the replies if exist#}
+                    <div class="replies">
+                        {% for reply in comment.children %}
+                            <p class="info">
+                                {% trans "Reply" %} {{ forloop.counter }} {% trans "by" %} {{ reply.name }}
+                                {{ reply.created }}
+                            </p>
+                        {{ reply.body| linebreaks }}
+                        {% endfor %}
+                    </div>
+
+                    {#  reply form#}
+                    <a href="" class="reply-form-trigger">
+                        <p>Reply</p>
+                    </a>
+                    <form class="reply-form" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="parent_id" value="{{ comment.id }}">
+                        {{ comment_form.as_p }}
+                        <p><input type="submit" value="Reply"></p>
+                    </form>
+
+                </div>
+
+            {% endif %}
+
+        {% empty %}
+            <p>There are no comments yet.</p>
+        {% endfor %}
+
+        {#        the form to submit a comment#}
+        {% if new_comment %}
+            <h2>Your comment has been added.</h2>
+        {% else %}
+            <a href="" class="comment-form-trigger">
+                <h2>Add a new comment</h2>
+            </a>
+            <form class="comment-form" method="POST">
+                {{ comment_form.as_p }}
+                {% csrf_token %}
+                <p><input type="submit" value="Add comment"></p>
+            </form>
+        {% endif %}
+    {% endblock content %}
+</div>

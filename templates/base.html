@@ -1,0 +1,27 @@
+{% load static i18n%}
+<!DOCTYPE html>
+
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <link href="{% static 'css/blog.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <div class="nav">
+        {% include 'nav.html' %}
+    </div>
+    <div class="wrapper">
+        <div id="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+        <div class="sidebar">
+            <h2> Stuff on the side</h2>
+            <p>This is my blog</p>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

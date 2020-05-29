@@ -1,13 +1,13 @@
 from django.urls import path
-from . import views
-from .views import PostListView
+from .views import PostListView, post_share, post_detail
 
 app_name = 'blog'
 
 urlpatterns = [
     # post views
     path('', PostListView.as_view(), name='post_list'),
+    path('<int:post_id>/share/', post_share, name='post_share'),
     path('<int:year>/<int:month>/<int:day>/<slug:post>/',
-         views.post_detail,
+         post_detail,
          name='post_detail'),
 ]

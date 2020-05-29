@@ -19,15 +19,18 @@ h2 {
     font-weight:normal;
     margin:30px 0 0;
 }
-
+.wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
 #content {
-    float:left;
     width:60%;
     padding:0 0 0 30px;
+    margin-right: 2rem;
 }
 
 #sidebar {
-    float:right;
     width:30%;
     padding:10px;
     background:#efefef;
@@ -43,8 +46,9 @@ p.date {
 
 /* pagination */
 .pagination {
-    margin:40px 0;
+    margin:140px 0;
     font-weight:bold;
+
 }
 
 /* forms */
@@ -56,9 +60,9 @@ label {
 }
 input, textarea {
     clear:both;
-    float:left;
+    /*float:left;*/
     margin:0 0 10px;
-    background:#ededed;
+    background:whitesmoke;
     border:0;
     padding:6px 10px;
     font-size:12px;
@@ -72,10 +76,13 @@ input[type=submit] {
     text-transform:uppercase;
 }
 .errorlist {
-    color:#cc0033;
+    color: #cc0033;
     float:left;
     clear:both;
     padding-left:10px;
+}
+.language-switcher{
+    padding-right:40px;
 }
 
 /* comments */
@@ -85,8 +92,27 @@ input[type=submit] {
 .comment:nth-child(even) {
     background:#efefef;
 }
+.comment:nth-child(odd) {
+    background: #e7e7e7;
+}
 .comment .info {
     font-weight:bold;
     font-size:12px;
     color:#666;
+}
+
+.comment-form,
+.reply-form {
+    display: none;
+    height: 350px;
+}
+
+a.reply-form-trigger {
+  position: relative;
+ }
+
+.nav ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
 }
