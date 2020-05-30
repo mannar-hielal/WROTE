@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'modeltranslation',
     'django.contrib.sites',
     'django.contrib.sitemaps',
+    'django.contrib.postgres',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

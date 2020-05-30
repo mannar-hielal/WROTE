@@ -3,6 +3,9 @@
     <li>
         <a href="{% url 'blog:post_list' %}">Home </a>
     </li>
+    <li>
+        <a href="{% url 'blog:post_search' %}">Search</a>
+    </li>
      <li>
         <form class="language-switcher" action={% url 'set_language' %} method="POST">
             {% csrf_token %}
