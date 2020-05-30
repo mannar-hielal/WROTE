@@ -1,3 +1,4 @@
+{% load blog_tags %}
 {% load static i18n%}
 <!DOCTYPE html>
 
@@ -17,7 +18,18 @@
         </div>
         <div class="sidebar">
             <h2> Stuff on the side</h2>
-            <p>This is my blog</p>
+            <p>Wrote {% total_posts %} posts so far.</p>
+            <h3>latest posts</h3>
+            {% show_latest_posts 3 %}
+            <h4> Most commented posts</h4>
+            {% get_most_commented_posts as most_commented_posts %}
+            <ul>
+                {% for post in most_commented_posts %}
+                    <li>
+                        <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
