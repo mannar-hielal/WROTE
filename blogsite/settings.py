@@ -11,9 +11,10 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+
 import environ
-from django.utils.translation import ugettext_lazy
 from decouple import config
+from django.utils.translation import ugettext_lazy
 
 env = environ.Env()
 if os.path.exists('.env'):
@@ -30,7 +31,7 @@ SECRET_KEY = env('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [env('DJANGO_ALLOWED_HOSTS')]
 
 SITE_ID = 1
 
@@ -146,9 +147,27 @@ LOCALE_PATHS = [
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_ROOT = env('STATIC_ROOT', default='/static/')
+# static_root the absolute path to the directory where static files
+# from all app are collected in one place to be served in production
+STATIC_ROOT = env('STATIC_ROOT', default='/static_root/')
+
+# the url to use when referring to the static_root dir
 STATIC_URL = env('STATIC_URL', default='/static/')
-STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
+
+# BASE_DIR=WROTE, STATICFILES_DIRS = WROTE/static
+# project might have assets that are not tied to a particular
+# app, in addition to staic inside each app, we can define
+# list of directories where django can look for static files
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+# List of finder classes that know how to find static files in
+# various locations.
+STATICFILES_FINDERS = (
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+)
 
 # External SMTP server for sending emails
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
