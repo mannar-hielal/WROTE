@@ -150,9 +150,11 @@ LOCALE_PATHS = [
 # static_root the absolute path to the directory where static files
 # from all app are collected in one place to be served in production
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_root/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root/')
 
 # the url to use when referring to the static_root dir
 STATIC_URL = env('STATIC_URL', default='/static_url/')
+MEDIA_URL = env('MEDIA_URL', default='/media_url/')
 
 # BASE_DIR=WROTE, STATICFILES_DIRS = WROTE/static
 # project might have assets that are not tied to a particular
