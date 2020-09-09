@@ -20,7 +20,19 @@ env = environ.Env()
 if os.path.exists('.env'):
     environ.Env.read_env('.env')
 
+# __file__ : settings.py
+# os.path.dirname(__file__): the directory where settings.py is: /Users/mannarhielal/Documents/showcase/WROTE/blogsite
+# os.path.abspath(__file__): the full path of settings.py: /Users/mannarhielal/Documents/showcase/WROTE/blogsite/settings.py
+# BASE_DIR = gives the directory where directory of settings is located, in other word the root of the project (wrote):
+# os.path.dirname(os.path.dirname(/Users/mannarhielal/Documents/showcase/WROTE/blogsite/settings.py))
+# os.path.dirname (/Users/mannarhielal/Documents/showcase/WROTE/blogsite)
+# /Users/mannarhielal/Documents/showcase/WROTE
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# os.pardir: .. go up one level
+# base_dir_2: is now the directory where settings.py is
+#BASE_DIR_2 = os.path.dirname(os.path.abspath(__file__))
+# do this if you create a folder named settings/ and local.py and prod.py
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
